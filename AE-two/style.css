@@ -1,0 +1,63 @@
+body {
+    background-color: rgb(206, 205, 205);
+    background-image: url(img/1618528200_1-phonoteka_org-p-neiroset-fon-1.jpg);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif !important;
+}
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.navigation {
+    margin: 0 auto;
+    padding-right: 40px;
+    padding-left: 40px;
+    position: fixed;
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.header__button {
+    height: 50px;
+    max-width: 220px;
+    width: 100%;
+}
+.header__content {
+    height: 50px;
+    max-width: 220px;
+    width: 100%;
+    background-color: rgba(33, 58, 58, 0.911);
+    margin: 0 auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.hero {
+    padding-top: 100px;
+    text-align: center;
+}
+.hero__text{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgba(235, 235, 235, 0.952);
+}
+.hero__txt {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    padding-top: 40px;
+}
+.stepper-one:not(.active) {
+    display: none;
+ }
+ .reg_txt {
+     text-transform: uppercase;
+     font-size: 22px;
+     color: black;
+     text-align: center;
+ }

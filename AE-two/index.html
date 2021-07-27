@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script ENGINE="text/javascript" src="https://code.jquery.com/jquery-1.11.2.js "></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup.css">
+    <script src="../library/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    
+<div class="wrapper">
+    <section>
+        <header>
+            <div class="navigation">
+            <div class="header__button"><button class="header__content">Посетить</button></div>
+            <div class="header__button"><button class="header__content">Самые</button></div>
+            <div class="header__button"><button class="header__content">Красивые</button></div>
+            <div class="header__button"><button class="header__content">Места</button></div>
+            <div class="header__button"><button class="header__content">Планеты</button></div>
+            </div>
+        </header>
+        <div class="hero">
+            <h1 class="hero__text"> Уголки мира, в которых вы должны побывать</h1>
+            <p class="hero__txt">На нашей планете есть немало интересных мест для путешествий, но лишь некоторые из них можно с уверенностью назвать самыми красивыми в мире. И неважно, это одно из природных чудес света или архитектурный шедевр, созданный человеческими руками — на поездку сюда не жаль потратить свой отпуск. Несколько недель отдыха пролетят очень быстро, но память об удивительно красивых уголках, восторг от увиденного и яркие фотографии останутся надолго.</p>
+            <p class="hero__txt"> Все что вам нужно сделать, это нажать на кнопку ниже!</p>
+        </div>
+            <div class="style__popup">
+                 <button class="popup__button"> 
+                      <a href="" class="open-popup style__popup"> <p style="color: white; font-size: 14px; text-transform: uppercase;" >  Оставить заявку </p> </a> 
+                 </button> 
+            </div>
+
+        <div class="popup-bg">
+            <div class="popup">
+                <img class="close-popup" src="img/x.png" alt="">
+                <form id="regForm" action="">
+                    <h1 class="reg_txt">Зарегистрироваться:</h1>
+                    <div class="tab">
+                      <p><input placeholder="Имя..." oninput="this.className = ''"></p>
+                      <p><input placeholder="Фамилия..." oninput="this.className = ''"></p>
+                    </div>
+                    
+                    <div class="tab">
+                      <p><input placeholder="Почта..." oninput="this.className = ''"></p>
+                      <p><input placeholder="Телефон..." oninput="this.className = ''" ></p>
+                    </div>
+                    
+                    <div class="tab">
+                      <p><input placeholder="дд" oninput="this.className = ''"></p>
+                      <p><input placeholder="мм" oninput="this.className = ''"></p>
+                    </div>
+                    
+                    <div class="tab">
+                      <p><input placeholder="Имя пользователя..." oninput="this.className = ''"></p>
+                      <p><input placeholder="Пароль..." oninput="this.className = ''"></p>
+                    </div>
+                    
+                    <div class="btn" style="overflow:auto;">
+                      <div style="float:right;" >
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Назад</button>
+                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Вперед</button>
+                      </div>
+                    </div>
+                    <div style="text-align:center;margin-top:40px;">
+                      <span class="step"></span>
+                      <span class="step"></span>
+                      <span class="step"></span>
+                      <span class="step"></span>
+                    </div>
+                    
+                    </form>
+            </div>
+        </div>
+    </section>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
