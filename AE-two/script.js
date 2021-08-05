@@ -4,9 +4,20 @@ $('.open-popup').click(function(e) {
     $('html').addClass('no-scroll');
 });
 
-$('.close-popup').click(function() {
+$('.close-popup, .closed').click(function() {
     $('.popup-bg').fadeOut(800);
     $('html').removeClass('no-scroll');
+});
+
+$('.closed').click(function(e) {
+  e.preventDefault();
+  $('.open').fadeIn(1800);
+  $('html').addClass('no-scroll');
+});
+
+$('.tips').click(function() {
+  $('.open').fadeOut(800);
+  $('html').removeClass('no-scroll');
 });
 
 var currentTab = 0;
@@ -21,9 +32,16 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Отправить";
+   var el = document.getElementById("nextBtn");
+   el.remove();
   } else {
     document.getElementById("nextBtn").innerHTML = "Вперед";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("comBtn").style.display = "inline";
+    
+  } else {
+    document.getElementById("comBtn").style.display = "none";
   }
   fixStepIndicator(n)
 }
@@ -70,4 +88,79 @@ function fixStepIndicator(n) {
     x[i].className = x[i].className.replace(" active", "");
   }
   x[n].className += " active";
+}
+
+
+// let form = document.getElementById('regForm');
+// // let fawe = document.querySelectorAll('reqForm')
+// // console.log(fawe);
+//     form.addEventListener('submit', function(event) {
+//         let one = this.querySelector('[name="firstName"]').value;
+//         let two = this.querySelector('[name="surname"]').value;
+//         let three = this.querySelector('[name="email"]').value;
+//         let four = this.querySelector('[name="phone"]').value;
+//         let five = this.querySelector('[name="day"]').value;
+//         let six = this.querySelector('[name="mounth"]').value;
+//         let seven = this.querySelector('[name="Username"]').value;
+//         let eight = this.querySelector('[name="Password"]').value;
+
+//         let searchParams = new URLSearchParams();
+//         searchParams.set('firstName', one);
+//         searchParams.set('surname', two);
+//         searchParams.set('email', three);
+//         searchParams.set('phone', four);
+//         searchParams.set('day', five);
+//         searchParams.set('mounth', six);
+//         searchParams.set('Username', seven);
+//         searchParams.set('Password', eight);
+        
+//     // function info () {
+//     //   let one = document.getElementById ("q").value;
+//     //   let two = document.getElementById ("w").value;
+//     //   let three = document.getElementById ("e").value;
+//     //   let thour = document.getElementById ("r").value;
+//     // }
+//         let promise = fetch('https://jsonplaceholder.typicode.com/users', {
+//             method: 'POST',
+//             body: searchParams,
+//         });
+        
+//         promise.then(
+//             response => {
+//                 return response.text();
+//             }
+//         ).then(
+//             text => {
+//               alert('заявка принята');
+//                 console.log(text);
+//             }
+//         );
+        
+//         event.preventDefault();
+//     });
+
+
+$( document ).ready(function() {
+  $("#comBtn").click(
+  function(){
+    sendAjaxForm('result_form', 'regForm', 'handler.php');
+    return false; 
+  }
+);
+});
+
+function sendAjaxForm(result_form, regForm, url) {
+  $.ajax({
+      url:     'https://jsonplaceholder.typicode.com/users',
+      type:     "POST", 
+      dataType: "html", 
+      data: $("#"+regForm).serialize(), 
+        success: function(response) { 
+        result = $.parseJSON(response);
+        $('#result_form').html('Спасибо '+ result.firstName + ', запрос отправлен');
+    },
+      error: function(response) { 
+          $('#result_form').html('Ошибка. Данные не отправлены.');
+    }
+ });
 }

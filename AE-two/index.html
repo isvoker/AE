@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script ENGINE="text/javascript" src="https://code.jquery.com/jquery-1.11.2.js "></script>
+    <title>form</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="popup.css">
-    <script src="../library/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     
@@ -16,7 +15,7 @@
     <section>
         <header>
             <div class="navigation">
-            <div class="header__button"><button class="header__content">Посетить</button></div>
+            <div class="header__button"><button class="header__content">фывы</button></div>
             <div class="header__button"><button class="header__content">Самые</button></div>
             <div class="header__button"><button class="header__content">Красивые</button></div>
             <div class="header__button"><button class="header__content">Места</button></div>
@@ -37,31 +36,33 @@
         <div class="popup-bg">
             <div class="popup">
                 <img class="close-popup" src="img/x.png" alt="">
-                <form id="regForm" action="">
+                <form id="regForm" action=""method="POST">
                     <h1 class="reg_txt">Зарегистрироваться:</h1>
                     <div class="tab">
-                      <p><input placeholder="Имя..." oninput="this.className = ''"></p>
-                      <p><input placeholder="Фамилия..." oninput="this.className = ''"></p>
+                      <p><input placeholder="Имя..." oninput="this.className = ''" name="firstName" id="firstName"></p>
+                      <p><input placeholder="Фамилия..." oninput="this.className = ''" name="surname" id="surname"></p>
                     </div>
                     
                     <div class="tab">
-                      <p><input placeholder="Почта..." oninput="this.className = ''"></p>
-                      <p><input placeholder="Телефон..." oninput="this.className = ''" ></p>
+                      <p><input placeholder="Почта..." oninput="this.className = ''" name="email" id="email"></p>
+                      <p><input placeholder="Телефон..." oninput="this.className = ''" name="phone" id="phone"></p>
                     </div>
                     
                     <div class="tab">
-                      <p><input placeholder="дд" oninput="this.className = ''"></p>
-                      <p><input placeholder="мм" oninput="this.className = ''"></p>
+                      <p><input placeholder="дд" oninput="this.className = ''" name="day" id="day"></p>
+                      <p><input placeholder="мм" oninput="this.className = ''" name="mounth" id="mounth"></p>
                     </div>
                     
                     <div class="tab">
-                      <p><input placeholder="Имя пользователя..." oninput="this.className = ''"></p>
-                      <p><input placeholder="Пароль..." oninput="this.className = ''"></p>
+                      <p><input placeholder="Имя пользователя..." oninput="this.className = ''" name="Username" id="Username"></p>
+                      <p><input placeholder="Пароль..." oninput="this.className = ''" name="Password" id="Password"></p>
+                   
                     </div>
                     
-                    <div class="btn" style="overflow:auto;">
+                    <div class="btn"  style="overflow:auto;">
                       <div style="float:right;" >
-                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Назад</button>
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)"> Назад</button>
+                        <button class="closed" type="button" id="comBtn" onclick=""> Отправить </button> 
                         <button type="button" id="nextBtn" onclick="nextPrev(1)">Вперед</button>
                       </div>
                     </div>
@@ -72,9 +73,17 @@
                       <span class="step"></span>
                     </div>
                     
-                    </form>
+                  </form>
+                  
             </div>
+            
         </div>
+        <div class="open">
+            <div id ="result_form">
+            
+            </div>
+            <button class="tips"> Ok </button>
+        </div> 
     </section>
 </div>
     <script src="script.js"></script>
