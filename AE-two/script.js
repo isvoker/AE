@@ -90,7 +90,7 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 
-
+// !!! fetch !!!
 // let form = document.getElementById('regForm');
 // // let fawe = document.querySelectorAll('reqForm')
 // // console.log(fawe);
@@ -139,7 +139,7 @@ function fixStepIndicator(n) {
 //         event.preventDefault();
 //     });
 
-
+// !!!ajax+ jQuare!!!
 $( document ).ready(function() {
   $("#comBtn").click(
   function(){
@@ -154,13 +154,79 @@ function sendAjaxForm(result_form, regForm, url) {
       url:     'https://jsonplaceholder.typicode.com/users',
       type:     "POST", 
       dataType: "html", 
-      data: $("#"+regForm).serialize(), 
+      data: 
+      // {
+        // csrf_key: 'XXXXX',
+        // controller: 'my_proposal',
+        // action: 'save',
+        // values: {input_name_1: $value},
+    
+    $("#"+regForm).serialize(), 
         success: function(response) { 
         result = $.parseJSON(response);
-        $('#result_form').html('Спасибо '+ result.firstName + ', запрос отправлен');
+        $('#result_form').html('Спасибо '+ result.firstName + ', запрос отправлен');  
     },
+    
       error: function(response) { 
           $('#result_form').html('Ошибка. Данные не отправлены.');
-    }
+    },
  });
 }
+
+// !!! Axios !!!
+
+
+// var bodyFormData = new FormData();
+// bodyFormData.set ('firstName', 'firstName'.value)
+
+// axios({
+//   method: 'post',
+//   url: 'https://jsonplaceholder.typicode.com/users',
+//   data: bodyFormData,
+//   config: { headers: {'Content-Type': 'multipart/form-data' }}
+//   })
+//   .then(function (response) {
+//       //handle success
+//       console.log(response);
+//   })
+//   .catch(function (response) {
+//       //handle error
+//       console.log(response);
+//   });
+
+// !!@!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// function people () {
+//         let one = document.querySelectorid('firstName').value;
+//         let two = document.querySelectorid('surname').value;
+//         let three = document.querySelectorid('email').value;
+//         let four = document.querySelectorid('phone').value;
+//         let five = document.querySelectorid('day').value;
+//         let six = document.querySelectorid('mounth').value;
+//         let seven = document.querySelectorid('Username').value;
+//         let eight = document.querySelectorid('Password').value;
+// }
+      
+// const url = 'https://proposal-dev.web-ae.ru/ajax/'
+
+// let data = {
+//   csrf_key: 'hicfhM4T_3ca2O8TNnwDMq7pZFo-T3oG',
+//   controller: 'my_proposal',
+//   action: 'save',
+//   values: {}
+// };
+
+// data.value = people;
+// try {
+//   const response = fetch(url, {
+//     method: 'POST', 
+//     body: JSON.stringify(data), 
+//     headers: {
+//       'Content-Type': 'application/json;charset=utf-8'
+//     }
+//   });
+//   const json =  response.json();
+//   console.log('Успех:', JSON.stringify(json));
+// } catch (error) {
+//   console.log();('Ошибка:', error);
+// }
+
