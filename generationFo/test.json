@@ -1,0 +1,28 @@
+
+    {
+		
+		"01": {
+			"name": "ФИО", "type": "string", "maxlength": 128, "required": true
+		},
+		"02": {
+			"name": "Контактный телефон", "type": "string", "maxlength": 64, "required": true
+		},
+		"03": {
+			"name": "Email", "type": "string", "maxlength": 64, "required": true
+		},
+		"04": {
+			"name": "Файлы", "type": "string", "maxlength": 128, "required": true
+		},
+		"05": {
+			"name": "Контактный телефон", "type": "string", "maxlength": 64, "required": true
+		},
+		"06": {
+			"name": "message", "maxlength": 128, "required": true
+		},
+		"07": {
+			"name": "file[]", "type": "file", "required": true 
+		},
+		"08": {
+			"name": "submit", "type": "submit", "required": true
+		}
+    }
