@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link rel="stylesheet" href="style.css">
+   
+    <title>Document</title>
+</head>
+<body>
+      <div class="menu">
+        <ul>
+            <li><a href="/">этап 1</a></li>
+            <li><a > этап 2</a></li>
+        </ul>
+    </div>
+
+    <div class="tab">
+        <form action="" id="form__one"> </form>
+        
+    </div>
+
+    <div class="tab">
+        <form action="" id="form__two"> </form>
+    </div>
+
+
+<form method="post" action="" id="form" enctype="multipart/form-data">
+            
+    <label>Name*</label>
+    <input name="name" placeholder="Type Here">
+    
+    <label>Email*</label>
+    <input name="email" type="email" placeholder="Type Here">
+    
+    <label>Message</label>
+    <textarea name="message"  placeholder="Type Here"></textarea>
+    
+    <label >Send file</label>
+    <input name="file[]" type="file" id="file_attach" class="sendFile"  multiple="" placeholder="Type Here">
+    
+
+    <input id="submit" name="submit" type="submit" value="Submit">
+<section> 
+    
+</section>
+    <div id="result">
+
+    </div>
+    
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
