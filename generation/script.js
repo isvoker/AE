@@ -6,175 +6,148 @@ request.open('GET', requestURL);
 request.responseType = 'json';
 request.send();
 request.onload = function() {
-    const all = request.response;
-    console.log(all);
-	const form__one = document.getElementById('form__one');   
-	// const form__two = document.getElementById('form__two');  
-	let string = ''; 
+    const all= request.response;
+	let step = document.createElement('div')
+	step.setAttribute('class', 'menu' );
+	step.setAttribute('id', 'menu' );
+	let b = 1;
+
 	for(let i in all) {
 		const obj = all[i];
-	
-		let label = "<label>"+ obj.name + "</label>";
-		let input = "<input";
-		let attributes  = " ";
+		const div = document.createElement('div');
+		let qwe = step.appendChild( document.createElement('span') );
+		let steps = qwe.appendChild( document.createElement('a' ) );
+		steps.setAttribute('href', '#form' + b);
+		steps.setAttribute('id', 'steps_' + b);
+		steps.innerHTML = "этап "+ b;
+		div.setAttribute('class', '' + i);
+		div.setAttribute('id', '' + i);
+		b += 1;
+		let form = "<form method='POST' id ="+'form' + b +">";
 
-// delete all["01"];
+		for(let k in obj) {	
+			// console.log(obj[k]);
+			let label = "<label>"+ obj[k]["name"] + "</label>";
+			let input = "<input";
+			let attributes  = " ";
+
+			if (obj[k].id == "subm") {
+				obj[k].id += i;
+			}
+
+			if (obj[k].type == "textarea"){
+				input = "<textarea"
+			}	
+			for (let key in obj[k]) {
+				attributes  +=  key + '="' + obj[k][key] + '"' ;
+			}	
+			form += label + input + attributes +  "> </textarea>"  ;
+
+		}
 		
-		if (obj.type == "textarea"){
-			input = "<textarea></textarea>"
-		}
-		// console.log(all["01"]);
-		// console.log(all);
-		for (let key in obj) {
-
-			attributes  +=  key + '="' + obj[key] + '"' ;
-		}
-
-		string += label + input + attributes +  ">" ;
-
-		form__one.innerHTML = string; 
-		// obj.remove("name");
-	
-if (obj.type == "textarea"){
-			input = "<textarea></textarea>"
-		}
-	}
-
-	document.getElementById('subm').addEventListener = function() {
-		window.location.href = 'test.html';
-	  };
-
-	
-	$(function () {
-    let location = window.location.href;
-    let cur_url = '/' + location.split('/').pop();
-
-    $('.menu li').each(function () {
-        let link = $(this).find('a').attr('href');
- 
-        if (cur_url == link) {
-            $(this).addClass('current');
-        }
-    });
-});
+		document.body.append(step) ;
+		step.innerHTML; 
+		document.body.append(div);
+		div.innerHTML = form + "</form>" ; 
 
 
+			steps.classList.add('unactive');
+			div.classList.add('hide');
+			steps.onclick = function(e) {
+					e.preventDefault();
+					console.log(div);
+
+					this.classList.add('active');
+
+					console.log(steps.classList == 'active' || 'active unactive'== false);
+
+					if (steps.classList == 'active' || 'active unactive') { 
+					    this.classList.remove('active');
+						this.classList.add('active');
+						div.classList.add('show');
+					}
+			};		
+
+	};
+// __________________________________
+	let int = 1;
+
+	const file_attach = document.getElementById('file'); 
+	const forms = document.querySelectorAll('div > form');
+	console.log(forms);
+	const message = {
+		loading: 'Отправка...',
+		success: 'Форма отправлена',
+		failed: 'Что-то пошло не так...'
+	};
+
+	file_attach.addEventListener('change', () => {
+		uploadFile(file_attach.files);
+	});
+
+	const uploadFile = (file) => {
+		console.log(file.name);
+	};
+	const postData = async (url, fData) => {  
+		document.querySelector('.status').innerHTML = message.loading;  
+
+		const fetchResponse = await fetch(url, {
+			method: 'POST',
+			body: fData
+		});
+
+		return await fetchResponse.text();
+	};
+	if (forms) {
+		forms.forEach(el => {
+			el.addEventListener('submit', function (e) {
+				e.preventDefault();
+				int = ++int;
+				// document.getElementById('subma1');
+				// document.getElementById('submb1');
+				let statusMessage = document.createElement('div');
+				statusMessage.classList.add('status');
+
+				this.classList.remove('active');
+				this.classList.add('с1');
+				el.appendChild(statusMessage);
+				const fData = new FormData(el);
+				fData.append('file_attach', file_attach.files[0]); 
+				console.log(file_attach.files);
+
+				postData('/upload.php', fData)
+				.then(fetchResponse => {
+					statusMessage.innerHTML = message.success;
+
+				})
+				.catch(() => statusMessage.innerHTML = message.failed)
+				console.log(int);
+
+				// switch (int) {
+				// 	case 2 :
+				// 		$("#a1").css("display", "none");
+				// 		$("#b1").css("display", "block");
+				// 		$("#steps_1").removeClass('active');
+				// 		$("#steps_1").addClass('unactive');
+				// 		$("#steps_2").addClass('active');
+
+				// 		$('#steps_1').click(function(){
+				// 			$("#a1").css("display", "block");
+				// 			$("#b1").css("display", "none");
+				// 		});
+				// 		break;
+				// 	case 3 :
+				// 		$("#b1").css("display", "none");
+				// 		$("#с1").css("display", "block");
+				// 		$("#steps_2").removeClass('active');
+				// 		$("#steps_3").addClass('active');
+				// 		$("#steps_2").addClass('unactive')	
+				// 		break;
+				// }		
+			});
+		});
+		
+		
+	};
 
 };
-
-
-
-
-
-
-
-
-
-
-
-// const a = 1;
-
-// 	switch (a) {
-// 		case 1:
-// 			// addElement ();
-// 		  break;
-// 		case 2:
-		  
-// 		  break;
-// 		case 3:
-		  
-// 		  break;
-// 		  case 4:
-		 
-// 		  break;
-// 		default:
-// 		  alert( "Форма отсутствует!" );
-// 	  }
-
-
-
-
-
-// 	  function addElement() {
-// 		let newMess = document.createElement("textarea");
-// 		let doc = document.getElementById('form__one');
-// 		doc.appendChild(newMess);
-// 	  }
-	  
-
-
-
-// let form = document.getElementById('form__one');
-// let string = key + '="' + obj[key] + '"';
-// form.innerHTML = string;
-// console.log (string);
-
-
-// const obj = {
-// 	'ключ 1': 'значение 1',
-// 	'ключ 2': 'значение 2',
-// 	'ключ 3': 'значение 3'
-//   }
-// console.log(obj["ключ 1"]);
-//   for(let key in obj) {
-//   console.log();
-//   };
-
-// // async function f() { 
-// // 	const requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
-// // 	  let response = await fetch(requestURL);
-  
-// // 	  if (response.ok) { 
-// // 	  let all = await response.json();
-// // 	  console.log(all);
-// // 	  } else {
-// // 	  alert("Ошибка HTTP: " + response.status); 
-// // 	  }
-// //   }
-// //   f(); 
-// //   JSON.parse('null');
-// //   }
-// // function populateHeader(jsonObj) {
-// // 	var myH1 = document.createElement('h1');
-// // 	myH1.textContent = jsonObj['stages'];
-// // 	header.appendChild(myH1);
-  
-// // 	var myPara = document.createElement('p');
-// // 	myPara.textContent = 'Hometown: ' + jsonObj['1a02'] + ' // Formed: ' + jsonObj['rows'];
-// // 	header.appendChild(myPara);
-// //   }
-  
-// // let div = document.createElement('div');
-// //   div.innerHTML = "111111111";
-// //   document.body.append(div);
-
-
-
-// async function f() { 
-// 	const requestURL = 'test.json';
-// 	  let response = await fetch(requestURL);
-  
-// 	  if (response.ok) { 
-// 	  let all = await response.json();
-// 	  console.log(all);
-	  
-// 	  let div = document.createElement('input');
-// 	  div.innerHTML = all["01"];
-// 	  document.body.append(div);
-  
-// 	  } else {
-// 	  alert("Ошибка HTTP: " + response.status); 
-// 	  }
-	  
-//   }
-//   f(); 
-
- 
-
-
-
-
-
-
-
-

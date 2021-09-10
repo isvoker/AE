@@ -3,7 +3,7 @@ body {
 	font-size:100%;
 	font-family: 'Roboto';
 	color:#f0f3fcfd;
-    background-color: hsla(180, 17%, 19%, 0.664);
+    background-color: hsl(0deg 0% 0% / 93%);
 }
 
 .all {
@@ -27,7 +27,7 @@ label {
 input, textarea {
 	width:439px;
 	height:27px;
-	background:#efefef;
+	background: radial-gradient(circle farthest-corner at 100px 100px, #8b98a2bd, #ffffff94);
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -95,7 +95,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgba(17, 17, 17, 0.815);
+    background-color: rgb(0 0 0 / 47%);
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -124,4 +124,34 @@ body {
 }
 .current a {
     color: #06e450ea;
+}
+.b1 {
+    z-index: 0;
+    top: 0;
+    /* position: absolute; */
+    right: 29.5%;
+}
+li {
+	padding-top: 10px
+}
+.menu a.active,
+.menu a:hover {
+    background-color: #0d6911e0;
+}
+.a1 {
+    text-align: center;
+}
+
+span {
+    text-align: center;
+
+}
+.unactive {
+    background-color: #272727;
+}
+.hide{
+    display: none;
+}
+.show {
+    display: block;
 }
